@@ -40,107 +40,116 @@ export const MENU_ITEMS = [{
     url: '/items/item-add',
     parentKey: 'items'
   }]
-}, {
-  key: 'category',
-  icon: 'solar:clipboard-list-bold-duotone',
-  label: 'Category',
+},
+{
+  key: 'customer',
+  label: 'Customers',
+  icon: 'solar:users-group-two-rounded-bold-duotone',
   children: [{
-    key: 'category-list',
+    key: 'customer-list',
     label: 'List',
-    url: '/category/category-list',
-    parentKey: 'category'
+    url: '/customer/customer-list',
+    parentKey: 'customer'
   }, {
-    key: 'category-edit',
-    label: 'Edit',
-    url: '/category/category-edit',
-    parentKey: 'category'
-  }, {
-    key: 'category-add',
+    key: 'customer-detail',
+    label: 'Details',
+    url: '/customer/customer-detail',
+    parentKey: 'customer'
+  },
+  {
+    key: 'customer-add',
     label: 'Create',
-    url: '/category/category-add',
-    parentKey: 'category'
-  }]
-}, {
-  key: 'inventory',
-  label: 'Inventory',
-  icon: 'solar:box-bold-duotone',
-  children: [{
-    key: 'warehouse',
-    label: 'Warehouse',
-    url: '/inventory/warehouse',
-    parentKey: 'inventory'
-  }, {
-    key: 'received-orders',
-    label: 'Received Orders',
-    url: '/inventory/received-orders',
-    parentKey: 'inventory'
-  }]
-}, {
-  key: 'orders',
-  label: 'Orders',
-  icon: 'solar:bag-smile-bold-duotone',
-  children: [{
-    key: 'orders-list',
-    label: 'List',
-    url: '/orders/orders-list',
-    parentKey: 'orders'
-  }, {
-    key: 'order-detail',
-    label: 'Detail',
-    url: '/orders/order-detail',
-    parentKey: 'orders'
-  }, {
-    key: 'order-cart',
-    label: 'Cart',
-    url: '/orders/order-cart',
-    parentKey: 'orders'
-  }, {
-    key: 'order-checkout',
-    label: 'Checkout',
-    url: '/orders/order-checkout',
-    parentKey: 'orders'
-  }]
-}, {
-  key: 'purchases',
-  label: 'Purchases',
-  icon: 'solar:card-send-bold-duotone',
-  children: [{
-    key: 'purchase-list',
-    label: 'List',
-    url: '/purchases/purchase-list',
-    parentKey: 'purchases'
-  }, {
-    key: 'purchase-order',
-    label: 'Order',
-    url: '/purchases/purchase-order',
-    parentKey: 'purchases'
-  }, {
-    key: 'purchase-returns',
-    label: 'Returns',
-    url: '/purchases/purchase-returns',
-    parentKey: 'purchases'
-  }]
-}, {
-  key: 'attributes',
-  label: 'Attributes',
-  icon: 'solar:confetti-minimalistic-bold-duotone',
-  children: [{
-    key: 'attributes-list',
-    label: 'List',
-    url: '/attributes/attributes-list',
-    parentKey: 'attributes'
-  }, {
-    key: 'attributes-edit',
-    label: 'Edit',
-    url: '/attributes/attributes-edit',
-    parentKey: 'attributes'
-  }, {
-    key: 'attributes-add',
-    label: 'Create',
-    url: '/attributes/attributes-add',
-    parentKey: 'attributes'
-  }]
-}, {
+    url: '/customer/customer-add',
+    parentKey: 'customer'
+  },
+]
+},
+ 
+//  {
+//   key: 'inventory',
+//   label: 'Inventory',
+//   icon: 'solar:box-bold-duotone',
+//   children: [{
+//     key: 'warehouse',
+//     label: 'Warehouse',
+//     url: '/inventory/warehouse',
+//     parentKey: 'inventory'
+//   }, {
+//     key: 'received-orders',
+//     label: 'Received Orders',
+//     url: '/inventory/received-orders',
+//     parentKey: 'inventory'
+//   }]
+// },
+//  {
+//   key: 'orders',
+//   label: 'Orders',
+//   icon: 'solar:bag-smile-bold-duotone',
+//   children: [{
+//     key: 'orders-list',
+//     label: 'List',
+//     url: '/orders/orders-list',
+//     parentKey: 'orders'
+//   }, {
+//     key: 'order-detail',
+//     label: 'Detail',
+//     url: '/orders/order-detail',
+//     parentKey: 'orders'
+//   }, {
+//     key: 'order-cart',
+//     label: 'Cart',
+//     url: '/orders/order-cart',
+//     parentKey: 'orders'
+//   }, {
+//     key: 'order-checkout',
+//     label: 'Checkout',
+//     url: '/orders/order-checkout',
+//     parentKey: 'orders'
+//   }]
+// },
+//  {
+//   key: 'purchases',
+//   label: 'Purchases',
+//   icon: 'solar:card-send-bold-duotone',
+//   children: [{
+//     key: 'purchase-list',
+//     label: 'List',
+//     url: '/purchases/purchase-list',
+//     parentKey: 'purchases'
+//   }, {
+//     key: 'purchase-order',
+//     label: 'Order',
+//     url: '/purchases/purchase-order',
+//     parentKey: 'purchases'
+//   }, {
+//     key: 'purchase-returns',
+//     label: 'Returns',
+//     url: '/purchases/purchase-returns',
+//     parentKey: 'purchases'
+//   }]
+// }, 
+// {
+//   key: 'attributes',
+//   label: 'Attributes',
+//   icon: 'solar:confetti-minimalistic-bold-duotone',
+//   children: [{
+//     key: 'attributes-list',
+//     label: 'List',
+//     url: '/attributes/attributes-list',
+//     parentKey: 'attributes'
+//   }, {
+//     key: 'attributes-edit',
+//     label: 'Edit',
+//     url: '/attributes/attributes-edit',
+//     parentKey: 'attributes'
+//   }, {
+//     key: 'attributes-add',
+//     label: 'Create',
+//     url: '/attributes/attributes-add',
+//     parentKey: 'attributes'
+//   }]
+// }, 
+{
   key: 'invoice',
   label: 'Invoices',
   icon: 'solar:bill-list-bold-duotone',
@@ -199,47 +208,55 @@ export const MENU_ITEMS = [{
   label: 'Permissions',
   icon: 'solar:checklist-minimalistic-bold-duotone',
   url: '/permissions'
-}, {
-  key: 'customer',
-  label: 'Customers',
-  icon: 'solar:users-group-two-rounded-bold-duotone',
+},
+{
+  key: 'category',
+  icon: 'solar:clipboard-list-bold-duotone',
+  label: 'Category',
   children: [{
-    key: 'customer-list',
+    key: 'category-list',
     label: 'List',
-    url: '/customer/customer-list',
-    parentKey: 'customer'
+    url: '/category/category-list',
+    parentKey: 'category'
   }, {
-    key: 'customer-detail',
-    label: 'Details',
-    url: '/customer/customer-detail',
-    parentKey: 'customer'
-  }]
-}, {
-  key: 'seller',
-  label: 'Sellers',
-  icon: 'solar:shop-bold-duotone',
-  children: [{
-    key: 'seller-list',
-    label: 'List',
-    url: '/seller/seller-list',
-    parentKey: 'seller'
-  }, {
-    key: 'seller-details',
-    label: 'Details',
-    url: '/seller/seller-details',
-    parentKey: 'seller'
-  }, {
-    key: 'seller-edit',
+    key: 'category-edit',
     label: 'Edit',
-    url: '/seller/seller-edit',
-    parentKey: 'seller'
+    url: '/category/category-edit',
+    parentKey: 'category'
   }, {
-    key: 'seller-add',
+    key: 'category-add',
     label: 'Create',
-    url: '/seller/seller-add',
-    parentKey: 'seller'
+    url: '/category/category-add',
+    parentKey: 'category'
   }]
-}, {
+},
+//  {
+//   key: 'seller',
+//   label: 'Sellers',
+//   icon: 'solar:shop-bold-duotone',
+//   children: [{
+//     key: 'seller-list',
+//     label: 'List',
+//     url: '/seller/seller-list',
+//     parentKey: 'seller'
+//   }, {
+//     key: 'seller-details',
+//     label: 'Details',
+//     url: '/seller/seller-details',
+//     parentKey: 'seller'
+//   }, {
+//     key: 'seller-edit',
+//     label: 'Edit',
+//     url: '/seller/seller-edit',
+//     parentKey: 'seller'
+//   }, {
+//     key: 'seller-add',
+//     label: 'Create',
+//     url: '/seller/seller-add',
+//     parentKey: 'seller'
+//   }]
+// },
+ {
   key: 'OTHER',
   label: 'OTHER',
   isTitle: true

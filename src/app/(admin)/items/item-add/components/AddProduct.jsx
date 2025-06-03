@@ -13,7 +13,7 @@ const AddProduct = () => {
         </CardHeader>
         <CardBody>
           <Row>
-            <Col lg={6}>
+            <Col lg={4}>
               <form>
                 <div className="mb-3">
                   <label htmlFor="product-name" className="form-label">
@@ -23,7 +23,7 @@ const AddProduct = () => {
                 </div>
               </form>
             </Col>
-            <Col lg={6}>
+            <Col lg={4}>
               <form>
                 <label htmlFor="item-types" className="form-label">
                   Item Type
@@ -33,6 +33,16 @@ const AddProduct = () => {
                   <option value="goods">Goods</option>
                   <option value="service">Service</option>
                 </select>
+              </form>
+            </Col>
+            <Col lg={4}>
+              <form>
+                <div className="mb-3">
+                  <label htmlFor="selling-price" className="form-label">
+                    Selling Price
+                  </label>
+                  <input type="number" id="selling-price" className="form-control" placeholder="" />
+                </div>
               </form>
             </Col>
           </Row>
@@ -78,19 +88,7 @@ const AddProduct = () => {
           </Row>
          
          
-          <Row>
-            <Col lg={4}>
-              <form>
-                <div className="mb-3">
-                  <label htmlFor="selling-price" className="form-label">
-                    Selling Price
-                  </label>
-                  <input type="number" id="selling-price" className="form-control" placeholder="" />
-                </div>
-              </form>
-            </Col>
-            
-          </Row>
+         
           <Row>
             <Col lg={12}>
               <div className="mb-3">
