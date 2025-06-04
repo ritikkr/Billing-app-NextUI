@@ -42,7 +42,7 @@ const QuotationForm = () => {
         filename: 'my-document.pdf',
         margin: [0.2, 0.2, 0.2, 0.2],
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 1.5 },
+        html2canvas: { scale: 3 },
         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
     };
 
@@ -72,10 +72,10 @@ const QuotationForm = () => {
         resolver: yupResolver(quotationSchema),
         defaultValues: {
             companyName: 'SUDHAKAR PEST CONTROL',
-            contact1: '9911721660',
+            contact1: '8285617785',
             contact2: '9650783958',
             address: '639, Gali No. 28, Chandan Vihar, West Sant Nagar, Burari, Delhi-110084',
-            refNo: 'SPD/2025/001',
+            licenseNo: '10698',
             dated: new Date().toISOString().slice(0, 10),
             estimateFor: 'Pest Control for Cockroach, Lizard Housefly, etc.',
             monthlyCharges: 8000,
@@ -139,17 +139,26 @@ const QuotationForm = () => {
                 <Button onClick={convertToPdf}>Download as PDF</Button>
             </div>
 
-            <div ref={componentRef}>
+            <div ref={componentRef} className="pdf-content">
                 <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
                     <Card className="p-4">
                         {/* Header Section */}
                         <div className="mb-4">
                             <Row className="align-items-center">
-                                <Col md={3} className="text-center">
-                                    <img src={product1.src} alt="Company Logo" style={{ maxWidth: '100%', height: 'auto', objectFit: 'contain' }} />
-                                </Col>
-                                <Col md={9}>
-                                    <div style={{ textAlign: isEditing ?'center': 'right' }}>
+                                {/* <Col md={3} className="text-center">
+                                    <img
+                                        src={product1.src}
+                                        alt="Company Logo"
+                                        style={{
+                                            maxWidth: '150px',
+                                            height: 'auto',
+                                            objectFit: 'contain',
+                                        }}
+                                        className="img-fluid"
+                                    />
+                                </Col> */}
+                                <Col md={12}>
+                                    <div style={{ textAlign: isEditing ? 'center' : 'right' }}>
                                         <h2 className="mb-0">
                                             {isEditing ? <TextFormInput control={control} name="companyName" label="Company Name" placeholder="Enter Company Name" /> : formValues.companyName}
                                         </h2>
@@ -177,7 +186,9 @@ const QuotationForm = () => {
                         {/* Main Content Section */}
                         <Row className="mb-3">
                             <Col md={6}>
-                                <EditableOrDisplay isEditing={isEditing} control={control} name="refNo" label="Ref. No" />
+                                <EditableOrDisplay isEditing={isEditing} control={control} name="licenseNo" label="License. No" />
+                                <h6>ISO 9001:2015</h6>
+
                             </Col>
                             <Col md={6} className="text-md-end">
                                 <EditableOrDisplay isEditing={isEditing} control={control} name="dated" label="Dated" type="date" />

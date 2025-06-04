@@ -3,6 +3,13 @@
 //
 
 // Logo
+@media screen and (max-width: 768px) {
+  .pdf-content {
+    width: 794px; /* A4 width in px at 96 DPI */
+    margin: 0 auto;
+    padding: 20px;
+  }
+}
 .logo-box {
      position: sticky;
      overflow: hidden;
