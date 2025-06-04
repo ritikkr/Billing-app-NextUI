@@ -43,9 +43,9 @@ const QuotationForm = () => {
     const [isEditing, setIsEditing] = React.useState(true);
     const options = {
     filename: 'my-document.pdf',
-    margin: 1,
+    margin: [0.2, 0.2, 0.2, 0.2], 
     image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2 },
+    html2canvas: { scale: 1.5 },
     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
     };
     const quotationSchema = yup.object({
