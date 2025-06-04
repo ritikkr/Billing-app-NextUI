@@ -64,6 +64,27 @@ export const MENU_ITEMS = [{
   },
 ]
 },
+{
+  key: 'category',
+  icon: 'solar:clipboard-list-bold-duotone',
+  label: 'Category',
+  children: [{
+    key: 'category-list',
+    label: 'List',
+    url: '/category/category-list',
+    parentKey: 'category'
+  }, {
+    key: 'category-edit',
+    label: 'Edit',
+    url: '/category/category-edit',
+    parentKey: 'category'
+  }, {
+    key: 'category-add',
+    label: 'Create',
+    url: '/category/category-add',
+    parentKey: 'category'
+  }]
+},
  
 //  {
 //   key: 'inventory',
@@ -209,27 +230,7 @@ export const MENU_ITEMS = [{
   icon: 'solar:checklist-minimalistic-bold-duotone',
   url: '/permissions'
 },
-{
-  key: 'category',
-  icon: 'solar:clipboard-list-bold-duotone',
-  label: 'Category',
-  children: [{
-    key: 'category-list',
-    label: 'List',
-    url: '/category/category-list',
-    parentKey: 'category'
-  }, {
-    key: 'category-edit',
-    label: 'Edit',
-    url: '/category/category-edit',
-    parentKey: 'category'
-  }, {
-    key: 'category-add',
-    label: 'Create',
-    url: '/category/category-add',
-    parentKey: 'category'
-  }]
-},
+
 //  {
 //   key: 'seller',
 //   label: 'Sellers',
