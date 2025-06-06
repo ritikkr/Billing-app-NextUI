@@ -136,7 +136,7 @@ const QuotationForm = () => {
                 <Button onClick={() => setIsEditing(!isEditing)} className="me-2">
                     {isEditing ? 'View Mode' : 'Edit Mode'}
                 </Button>
-                <Button onClick={convertToPdf}>Download as PDF</Button>
+               {!isEditing && <Button onClick={convertToPdf}>Download as PDF</Button>}
             </div>
 
             <div ref={componentRef} className="pdf-content">
