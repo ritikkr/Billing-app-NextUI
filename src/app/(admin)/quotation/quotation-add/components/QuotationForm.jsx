@@ -144,7 +144,7 @@ const QuotationForm = () => {
                     <Card className="p-4">
                         {/* Header Section */}
                         <div className="mb-4">
-                            <Row className="align-items-center">
+                           {!isEditing && <Row className="align-items-center">
                                 {/* <Col md={3} className="text-center">
                                     <img
                                         src={product1.src}
@@ -179,12 +179,12 @@ const QuotationForm = () => {
                                         </p>
                                     </div>
                                 </Col>
-                            </Row>
+                            </Row>}
                         </div>
-                        <hr />
+                      {!isEditing &&  <hr />}
 
                         {/* Main Content Section */}
-                        <Row className="mb-3">
+                       {!isEditing && <Row className="mb-3">
                             <Col md={6}>
                                 <EditableOrDisplay isEditing={isEditing} control={control} name="licenseNo" label="License. No" />
                                 <h6>ISO 9001:2015</h6>
@@ -193,9 +193,9 @@ const QuotationForm = () => {
                             <Col md={6} className="text-md-end">
                                 <EditableOrDisplay isEditing={isEditing} control={control} name="dated" label="Dated" type="date" />
                             </Col>
-                        </Row>
+                        </Row>}
 
-                        <h4 className="mb-3">Estimate</h4>
+                    { !isEditing &&   <h4 className="mb-3">Estimate</h4>}
                         <div className="mb-3">
                             <EditableOrDisplay isEditing={isEditing} control={control} name="estimateFor" label="Estimate For" type="textarea" rows={2} />
                         </div>
@@ -212,11 +212,11 @@ const QuotationForm = () => {
                         <div className="mb-4">
                             <EditableOrDisplay isEditing={isEditing} control={control} name="serviceAddress" label="Service Address" type="textarea" rows={2} />
                         </div>
-                        <hr />
+                      {!isEditing &&  <hr />}
 
                         {/* Bank Details Section */}
-                        <h5 className="mb-3">Bank Details:</h5>
-                        <Row>
+                        {!isEditing && <h5 className="mb-3">Bank Details:</h5>}
+                       {!isEditing && <Row>
                             <Col md={6}>
                                 <EditableOrDisplay isEditing={isEditing} control={control} name="bankName" label="Bank Name" />
                             </Col>
@@ -229,9 +229,9 @@ const QuotationForm = () => {
                             <Col md={6}>
                                 <EditableOrDisplay isEditing={isEditing} control={control} name="ifscCode" label="IFSC Code" />
                             </Col>
-                        </Row>
+                        </Row>}
                     </Card>
-
+                                            
                     {/* Save and Reset Buttons */}
                     {isEditing && (
                         <div className="p-3 bg-light mt-3 rounded no-print">

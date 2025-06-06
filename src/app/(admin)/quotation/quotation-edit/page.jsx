@@ -9,7 +9,7 @@ export const metadata = {
 };
 const CategoryEditPage = () => {
   return <>
-      <PageTItle title="CATEGORY EDIT" />
+      <PageTItle title="QUOTATION EDIT" />
         <QuotationForm />
       {/* </Row> */}
     </>;

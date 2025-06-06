@@ -65,24 +65,24 @@ export const MENU_ITEMS = [{
 ]
 },
 {
-  key: 'category',
+  key: 'quotation',
   icon: 'solar:clipboard-list-bold-duotone',
-  label: 'Category',
+  label: 'Quotations',
   children: [{
-    key: 'category-list',
+    key: 'quotation-list',
     label: 'List',
-    url: '/category/category-list',
-    parentKey: 'category'
+    url: '/quotation/quotation-list',
+    parentKey: 'quotation'
   }, {
-    key: 'category-edit',
+    key: 'quotation-edit',
     label: 'Edit',
-    url: '/category/category-edit',
-    parentKey: 'category'
+    url: '/quotation/quotation-edit',
+    parentKey: 'quotation'
   }, {
-    key: 'category-add',
+    key: 'quotation-add',
     label: 'Create',
-    url: '/category/category-add',
-    parentKey: 'category'
+    url: '/quotation/quotation-add',
+    parentKey: 'quotation'
   }]
 },
  
