@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 import { Card, CardBody, CardHeader, CardTitle, Col, Row } from 'react-bootstrap';
 const AddCustomer = () => {
-  return <Col xl={9} lg={8}>
+  return <Col xl={12} lg={12}>
       {/* <FileUpload title="Add Product Photo" /> */}
       <Card>
         <CardHeader>

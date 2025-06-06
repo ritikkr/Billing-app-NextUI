@@ -8,9 +8,8 @@ export const metadata = {
 const CustomerAddPage = () => {
   return <>
       <PageTItle title="CREATE CUSTOMER" />
-      <Row>
         <AddCustomer />
-      </Row>
+
     </>;
 };
 export default CustomerAddPage;

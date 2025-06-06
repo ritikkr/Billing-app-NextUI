@@ -8,9 +8,7 @@ export const metadata = {
 const ProductAddPage = () => {
   return <>
       <PageTItle title="CREATE ITEM" />
-      <Row>
         <AddProduct />
-      </Row>
     </>;
 };
 export default ProductAddPage;
