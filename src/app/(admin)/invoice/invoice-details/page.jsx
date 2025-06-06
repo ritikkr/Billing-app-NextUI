@@ -7,6 +7,7 @@ import { Alert, Card, CardBody, CardTitle, Col, Row } from 'react-bootstrap';
 import { currency } from '@/context/constants';
 import PageTItle from '@/components/PageTItle';
 import Link from 'next/link';
+import product1 from '@/assets/images/spc.png';
 export const metadata = {
   title: 'Invoice Details'
 };
@@ -18,10 +19,10 @@ const ProductData = async () => {
           <table className="table mb-0">
             <thead className="bg-light bg-opacity-50">
               <tr>
-                <th className="border-0 py-2">Product Name</th>
+                <th className="border-0 py-2">Item Name</th>
                 <th className="border-0 py-2">Quantity</th>
                 <th className="border-0 py-2">Price</th>
-                <th className="border-0 py-2">Tax</th>
+                <th className="border-0 py-2">HCN/SAC Code</th>
                 <th className="text-end border-0 py-2">Total</th>
               </tr>
             </thead>
@@ -29,17 +30,17 @@ const ProductData = async () => {
               {productData.slice(0, 4).map((item, idx) => <tr key={idx}>
                   <td>
                     <div className="d-flex align-items-center gap-3">
-                      <div className="rounded bg-light avatar d-flex align-items-center justify-content-center">
+                      {/* <div className="rounded bg-light avatar d-flex align-items-center justify-content-center">
                         <Image src={item.image} alt="product-Image" className="avatar" />
-                      </div>
+                      </div> */}
                       <div>
                         <Link href="" className="text-dark fw-medium fs-15">
                           {item.title}
                         </Link>
-                        <p className="text-muted mb-0 mt-1 fs-13">
+                        {/* <p className="text-muted mb-0 mt-1 fs-13">
                           <span>Size : </span>
                           {item.size}
-                        </p>
+                        </p> */}
                       </div>
                     </div>
                   </td>
@@ -55,24 +56,31 @@ const ProductData = async () => {
     </Row>;
 };
 const page = () => {
+  const options = {
+        filename: 'my-document.pdf',
+        margin: [0.2, 0.2, 0.2, 0.2],
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 3 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+    };
   return <>
       <PageTItle title="INVOICE DETAILS" />
       <Row className="justify-content-center">
         <Col lg={8}>
           <Card>
             <CardBody>
-              <div className="clearfix pb-3 bg-info-subtle p-lg-3 p-2 m-n2 rounded position-relative">
+              <div className="clearfix pb-3  p-lg-3 p-2 m-n2 rounded position-relative">
                 <div className="float-sm-start">
                   <div className="auth-logo">
                     <Image className="logo-dark me-1" src={logoDark} alt="logo-dark" height={24} />
                   </div>
                   <div className="mt-4">
-                    <h4>Larkon Admin.</h4>
+                    <h4>Sudhakar Pest Control</h4>
                     <address className="mt-3 mb-0">
-                      1729 Bangor St,
+                     639, Gali No. 28, Chandan Vihar, West Sant Nagar
                       <br />
-                      Houlton, ME, 04730 , United States <br />
-                      <abbr title="Phone">Phone:</abbr> +1(142)-532-9109
+                      Burari, Delhi-110084 <br />
+                      <abbr title="Phone">Phone:</abbr> 9650783985
                     </address>
                   </div>
                 </div>
@@ -116,22 +124,23 @@ const page = () => {
                     </table>
                   </div>
                 </div>
-                <div className="position-absolute top-100 start-50 translate-middle">
+                {/* <div className="position-absolute top-100 start-50 translate-middle">
                   <Image src={checkImg} alt="check-2" className="img-fluid" />
-                </div>
+                </div> */}
               </div>
               <div className="clearfix pb-3 mt-4">
                 <div className="float-sm-start">
                   <div>
                     <CardTitle as={'h4'}>Issue From :</CardTitle>
                     <div className="mt-3">
-                      <h4>Larkon Admin.INC</h4>
-                      <p className="mb-2">2437 Romano Street Cambridge, MA 02141</p>
+                      <h4>Sudhakar Pest Control</h4>
+                      <p className="mb-2">639, Gali No. 28, Chandan Vihar, West Sant Nagar <br />
+                      Burari, Delhi-110084</p>
                       <p className="mb-2">
-                        <span className="text-decoration-underline">Phone :</span> +(31)781-417-2004
+                        <span className="text-decoration-underline">Phone :</span> 9650783958
                       </p>
                       <p className="mb-2">
-                        <span className="text-decoration-underline">Email :</span> JulianeKuhn@jourrapide.com
+                        <span className="text-decoration-underline">Email :</span> sudhakarpestcontrol@gmail.com
                       </p>
                     </div>
                   </div>
@@ -164,12 +173,12 @@ const page = () => {
                           </td>
                           <td className="text-end text-dark fw-medium  py-2">{currency}777.00</td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                           <td className="text-end p-0 pe-5 py-2">
                             <p className="mb-0">Discount : </p>
                           </td>
                           <td className="text-end text-dark fw-medium  py-2">-{currency}60.00</td>
-                        </tr>
+                        </tr> */}
                         <tr>
                           <td className="text-end p-0 pe-5 py-2">
                             <p className="mb-0">Estimated Tax (15.5%) : </p>

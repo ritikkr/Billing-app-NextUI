@@ -98,35 +98,7 @@ const QuotationForm = () => {
         html2pdf().set(options).from(content).save();
     };
 
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-        documentTitle: `Quotation_${watch('companyName')}_${watch('refNo')}`,
-        pageStyle: `
-            @page {
-                size: A4;
-                margin: 20mm;
-            }
-            body {
-                font-family: Arial, sans-serif;
-                font-size: 10pt;
-            }
-            .no-print {
-                display: none;
-            }
-            img {
-                max-width: 100%;
-                height: auto;
-                display: block;
-            }
-        `,
-        onBeforeGetContent: async () => {
-            await new Promise((resolve) => setTimeout(resolve, 500));
-            return Promise.resolve();
-        },
-        onAfterPrint: () => {
-            console.log("Printing finished or cancelled.");
-        }
-    });
+ 
 
     const formValues = watch();
 
