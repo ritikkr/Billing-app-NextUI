@@ -8,7 +8,7 @@ export const metadata = {
 const CustomerPage = () => {
   return <>
       <PageTItle title="CUSTOMER LIST" />
-      <CustomerDataCard />
+      {/* <CustomerDataCard /> */}
       <CustomerDataList />
     </>;
 };

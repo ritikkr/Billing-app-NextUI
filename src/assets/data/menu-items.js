@@ -50,12 +50,13 @@ export const MENU_ITEMS = [{
     label: 'List',
     url: '/customer/customer-list',
     parentKey: 'customer'
-  }, {
-    key: 'customer-detail',
-    label: 'Details',
-    url: '/customer/customer-detail',
-    parentKey: 'customer'
-  },
+  }, 
+  // {
+  //   key: 'customer-detail',
+  //   label: 'Details',
+  //   url: '/customer/customer-detail',
+  //   parentKey: 'customer'
+  // },
   {
     key: 'customer-add',
     label: 'Create',

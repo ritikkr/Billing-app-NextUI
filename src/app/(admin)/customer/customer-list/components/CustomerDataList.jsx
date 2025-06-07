@@ -1,11 +1,26 @@
+"use client";
 import IconifyIcon from '@/components/wrappers/IconifyIcon';
 import { getAllOrders } from '@/helpers/data';
+import AxiosInstance from '@/utils/axiosInstance';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, CardFooter, CardTitle, Col, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Row } from 'react-bootstrap';
-const CustomerDataList = async () => {
-  const customerData = await getAllOrders();
+const CustomerDataList =  () => {
+  const [customerData, setCustomerData] = React.useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await AxiosInstance.get('/customers');
+        setCustomerData(data.data);
+      } catch (error) {
+        console.error('Error fetching customer data:', error);
+      }
+    };
+    fetchData();
+  }, []);
+  console.log('Customer Data:', customerData);
   return <Row>
       <Col xl={12}>
         <Card>
@@ -44,17 +59,15 @@ const CustomerDataList = async () => {
                       </div>
                     </th>
                     <th>Customer Name</th>
-                    <th>Invoice ID</th>
-                    <th>Status</th>
-                    <th>Total Amount</th>
-                    <th>Amount Due</th>
-                    <th>Due Date</th>
-                    <th>Payment Method</th>
+                    <th>Tax Id</th>
+                    <th>Email</th>
+                    <th>Contact</th>
                     <th>Action</th>
+
                   </tr>
                 </thead>
                 <tbody>
-                  {customerData.map((item, idx) => <tr key={idx}>
+                  {customerData.length> 0 && customerData.map((customer) => <tr key={customer.id}>
                       <td>
                         <div className="form-check">
                           <input type="checkbox" className="form-check-input" id="customCheck2" />
@@ -64,29 +77,24 @@ const CustomerDataList = async () => {
                         </div>
                       </td>
                       <td>
-                        {' '}
-                        {item.customer?.image && <Image src={item.customer.image} className="avatar-sm rounded-circle me-2" alt="..." />}{' '}
-                        {item.customer?.name}
+                        <Link href={`/customer/${customer.id}`} className="text-body">
+                       {customer.companyName}
+                       </Link>
                       </td>
-                      <td>
+                      {/* <td>
                         <Link href="" className="text-body">
                           {item.id}
                         </Link>{' '}
+                      </td> */}
+                      <td>
+                        {customer.taxId}
                       </td>
                       <td>
-                        {' '}
-                        <span className={`badge bg-${item.orderStatus == 'Canceled' ? 'danger' : item.orderStatus == 'Packaging' ? 'primary' : item.orderStatus == 'Draft' ? 'warning' : 'success'}-subtle text-${item.orderStatus == 'Canceled' ? 'danger' : item.orderStatus == 'Packaging' ? 'primary' : item.orderStatus == 'Draft' ? 'warning' : 'success'} py-1 px-2`}>
-                          {item.orderStatus}
-                        </span>{' '}
+                        {customer.email}
                       </td>
-                      <td> ${item.total} </td>
-                      <td> ${item.amountDue} </td>
-                      <td> {item.product?.date.toLocaleString('en-us', {
-                      day: 'numeric',
-                      month: 'short',
-                      year: 'numeric'
-                    })}</td>
-                      <td> {item.paymentMethod} </td>
+                      <td>
+                        {customer.contact}
+                      </td>
                       <td>
                         <div className="d-flex gap-2">
                           <Link href="" className="btn btn-light btn-sm">

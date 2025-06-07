@@ -4,17 +4,31 @@ import ChoicesFormInput from '@/components/form/ChoicesFormInput';
 import IconifyIcon from '@/components/wrappers/IconifyIcon';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { Card, CardBody, CardHeader, CardTitle, Col, Row } from 'react-bootstrap';
-
+import { Alert, Card, CardBody, CardHeader, CardTitle, Col, Row, Toast, ToastBody, ToastHeader } from 'react-bootstrap';
+import AxiosInstance from '@/utils/axiosInstance';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+const toastify = ({
+  props,
+  message
+}) => {
+  toast(message, {
+    ...props,
+    hideProgressBar: true,
+    theme: 'colored',
+    icon: false
+  });
+};
 const AddCustomer = () => {
   const [formData, setFormData] = useState({
     companyName: '',
     email: '',
     contact: '',
-    gst: '',
-    gstPreference: '',
+    taxId: '',
+    gstPreferences: '',
     address: '',
   });
+
 
   // Handle input changes
   const handleChange = (e) => {
@@ -24,8 +38,8 @@ const AddCustomer = () => {
       [id === 'company-name' ? 'companyName' :
         id === 'company-email' ? 'email' :
         id === 'contact' ? 'contact' :
-        id === 'gst' ? 'gst' :
-        id === 'gst-preferences' ? 'gstPreference' :
+        id === 'gst' ? 'taxId' :
+        id === 'gst-preferences' ? 'gstPreferences' :
         id === 'address' ? 'address' : id]: value
     }));
   };
@@ -35,18 +49,40 @@ const AddCustomer = () => {
     e.preventDefault();
     try {
       // Example API call
-      const res = await fetch('/api/customers', {
-        method: 'POST',
+      const res = await AxiosInstance.post('/customers', formData, {
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
       });
-      if (res.ok) {
-        alert('Customer added!');
+      // Check if the response is ok
+      if (res.status === 201) {
+        // Handle success (e.g., show message, redirect)
+       
+        // Reset form after successful submission
+        // handleCancel();
+         toastify({
+        message: 'Customer Added Successfully',
+        props: {
+          type: 'success',
+          position: 'top-right'
+        }
+      })
       } else {
-        alert('Failed to add customer');
+        // Handle error
+        toastify({
+          message: 'Failed to add customer',
+          props: {
+            type: 'error',
+            position: 'top-right'
+          }
+        });
       }
     } catch (err) {
-      alert('Error: ' + err.message);
+       toastify({
+          message: 'Failed to add customer',
+          props: {
+            type: 'error',
+            position: 'top-right'
+          }
+        });
     }
   };
 
@@ -145,7 +181,7 @@ const AddCustomer = () => {
                   data-choices
                   data-choices-groups
                   data-placeholder="Select Tax"
-                  value={formData.gstPreference}
+                  value={formData.gstPreferences}
                   onChange={handleChange}
                   required
                 >
