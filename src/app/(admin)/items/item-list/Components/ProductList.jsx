@@ -1,20 +1,13 @@
+"use client";
 import IconifyIcon from '@/components/wrappers/IconifyIcon';
 import { currency } from '@/context/constants';
 import { getProductData } from '@/helpers/data';
+import AxiosInstance from '@/utils/axiosInstance';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { Card, CardFooter, CardHeader, CardTitle, Dropdown, DropdownMenu, DropdownToggle } from 'react-bootstrap';
-const ProductCard = ({
-  title,
-  price,
-  category,
-  image,
-  rating,
-  size,
-  stockLeft,
-  stockSold
-}) => {
+const ProductCard = ({item}) => {
   return <tr>
       <td>
         <div className="form-check ms-1">
@@ -27,24 +20,20 @@ const ProductCard = ({
       <td>
         <div className="d-flex align-items-center gap-2">
             <Link href="" className="text-dark fw-medium fs-15">
-              {title}
+              {item.name}
             </Link>
         </div>
       </td>
       <td>
-        {currency}
-        {price}.00
+        {item.unitPrice}
       </td>
       <td>
         <p className="mb-1 text-muted">
-          <span className="text-dark fw-medium">{stockLeft} Item</span> Left
+          <span className="text-dark fw-medium">{item.hsnSacCode} </span>
         </p>
        
       </td>
-      <td>
-        <p className="mb-1 text-muted">Tax</p>
-      </td>
-
+     
       
       <td>
         <div className="d-flex gap-2">
@@ -61,14 +50,21 @@ const ProductCard = ({
       </td>
     </tr>;
 };
-const ProductList = async () => {
-  const productData = await getProductData();
+const ProductList =  () => {
+  const [productData, setProductData] = React.useState([]);
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const {data} = await AxiosInstance.get("/items");
+      setProductData(data);
+    };
+    fetchData();
+  }, []);
   return <Card>
       <CardHeader className="d-flex justify-content-between align-items-center gap-1">
         <CardTitle as={'h4'} className="flex-grow-1">
           All Item List
         </CardTitle>
-        <Link href="/products/product-add" className="btn btn-sm btn-primary">
+        <Link href="/items/item-add" className="btn btn-sm btn-primary">
           Add Item
         </Link>
         <Dropdown>
@@ -105,13 +101,12 @@ const ProductList = async () => {
                 <th>Item Name</th>
                 <th>Price</th>
                 <th>HCN</th>
-                <th>Tax Preference</th>
                 <th>Action</th>
 
               </tr>
             </thead>
             <tbody>
-              {productData.map((item, idx) => <ProductCard key={idx} {...item} />)}
+              {productData.map((item, idx) => <ProductCard key={idx} item={item} />)}
             </tbody>
           </table>
         </div>

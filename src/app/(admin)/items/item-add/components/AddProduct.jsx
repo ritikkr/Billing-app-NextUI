@@ -2,6 +2,7 @@
 import FileUpload from '@/components/FileUpload';
 import ChoicesFormInput from '@/components/form/ChoicesFormInput';
 import IconifyIcon from '@/components/wrappers/IconifyIcon';
+import AxiosInstance from '@/utils/axiosInstance';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { Card, CardBody, CardHeader, CardTitle, Col, Row } from 'react-bootstrap';
@@ -38,22 +39,33 @@ const AddProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Form Data:', formData);
+    const dataForSent = {
+      name: formData.name,
+      type: formData.type,
+      unitPrice: parseFloat(formData.price),
+      unitOfMeasure: formData.unit,
+      hsnSacCode: formData.type === 'goods' ? formData.hsn : formData.sac,
+      taxable: true, // Assuming all items are taxable by default
+      description: formData.description,
+    }
     try {
-      // Example API call
-      const res = await fetch('/api/products', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      if (res.ok) {
-        // Handle success (e.g., show message, redirect)
-        alert('Product added!');
-      } else {
-        // Handle error
-        alert('Failed to add product');
-      }
+      const data = await AxiosInstance.post('/items', dataForSent);
+     
+        console.log('Item added successfully:', data.data);
+        // Reset form after successful submission
+        setFormData({
+          name: '',
+          type: 'service',
+          price: '',
+          unit: '',
+          hsn: '',
+          sac:'',
+          tax: '',
+          description: '',
+        });
+      
     } catch (err) {
-      alert('Error: ' + err.message);
+      console.log('Error: ' + err.message);
     }
   };
 

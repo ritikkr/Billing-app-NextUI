@@ -11,80 +11,24 @@ export const MENU_ITEMS = [{
   key: 'items',
   label: 'Items',
   icon: 'solar:t-shirt-bold-duotone',
-  children: [{
-    key: 'item-list',
-    label: 'List',
+
     url: '/items/item-list',
-    parentKey: 'items'
-  },
-  // {
-  //   key: 'item-grid',
-  //   label: 'Grid',
-  //   url: '/items/item-grid',
-  //   parentKey: 'items'
-  // },
-  // {
-  //   key: 'item-details',
-  //   label: 'Details',
-  //   url: '/items/1',
-  //   parentKey: 'items'
-  // }, 
-  {
-    key: 'item-edit',
-    label: 'Edit',
-    url: '/items/item-edit',
-    parentKey: 'items'
-  }, {
-    key: 'item-add',
-    label: 'Create',
-    url: '/items/item-add',
-    parentKey: 'items'
-  }]
 },
 {
   key: 'customer',
   label: 'Customers',
   icon: 'solar:users-group-two-rounded-bold-duotone',
-  children: [{
-    key: 'customer-list',
-    label: 'List',
+
     url: '/customer/customer-list',
-    parentKey: 'customer'
-  }, 
-  // {
-  //   key: 'customer-detail',
-  //   label: 'Details',
-  //   url: '/customer/customer-detail',
-  //   parentKey: 'customer'
-  // },
-  {
-    key: 'customer-add',
-    label: 'Create',
-    url: '/customer/customer-add',
-    parentKey: 'customer'
-  },
-]
+
 },
 {
   key: 'quotation',
   icon: 'solar:clipboard-list-bold-duotone',
   label: 'Quotations',
-  children: [{
-    key: 'quotation-list',
-    label: 'List',
-    url: '/quotation/quotation-list',
-    parentKey: 'quotation'
-  }, {
-    key: 'quotation-edit',
-    label: 'Edit',
-    url: '/quotation/quotation-edit',
-    parentKey: 'quotation'
-  }, {
-    key: 'quotation-add',
-    label: 'Create',
+  
     url: '/quotation/quotation-add',
-    parentKey: 'quotation'
-  }]
+  
 },
  
 //  {
@@ -175,22 +119,9 @@ export const MENU_ITEMS = [{
   key: 'invoice',
   label: 'Invoices',
   icon: 'solar:bill-list-bold-duotone',
-  children: [{
-    key: 'invoice-list',
-    label: 'List',
+ 
     url: '/invoice/invoice-list',
-    parentKey: 'invoice'
-  }, {
-    key: 'invoice-details',
-    label: 'Details',
-    url: '/invoice/invoice-details',
-    parentKey: 'invoice'
-  }, {
-    key: 'invoice-add',
-    label: 'Create',
-    url: '/invoice/invoice-add',
-    parentKey: 'invoice'
-  }]
+    
 }, {
   key: 'settings',
   label: 'Settings',

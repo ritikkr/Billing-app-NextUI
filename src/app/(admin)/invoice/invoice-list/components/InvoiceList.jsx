@@ -1,10 +1,22 @@
+"use client";
 import IconifyIcon from '@/components/wrappers/IconifyIcon';
 import { getAllOrders } from '@/helpers/data';
+import AxiosInstance from '@/utils/axiosInstance';
 import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 import { Card, CardBody, CardFooter, CardTitle, Col, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Row } from 'react-bootstrap';
 const InvoiceList = async () => {
-  const PurchaseListPage = await getAllOrders();
+  const [PurchaseListPage, setPurchaseListPage] = React.useState([]);
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const {data} = await AxiosInstance.get("/bills");
+      console.log("Purchase List Data:", data);
+      
+      setPurchaseListPage(data);    
+    }
+    fetchData();
+  }, []);
   return <Row>
       <Col xl={12}>
         <Card>
@@ -12,6 +24,12 @@ const InvoiceList = async () => {
             <div>
               <CardTitle as={'h4'}>All Purchase Items</CardTitle>
             </div>
+            <div className='d-flex gap-2'>
+            <Link href={`/invoice/invoice-add`} className="btn btn-sm btn-primary">
+             
+              Add Invoice
+              
+            </Link>
             <Dropdown>
               <DropdownToggle as={'a'} href="#" className="btn btn-sm btn-outline-light rounded content-none icons-center" data-bs-toggle="dropdown" aria-expanded="false">
                 This Month <IconifyIcon className="ms-1" width={16} height={16} icon="bx:chevron-down" />
@@ -28,6 +46,7 @@ const InvoiceList = async () => {
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
+            </div>
           </div>
           <CardBody className="p-0">
             <div className="table-responsive">
@@ -42,11 +61,10 @@ const InvoiceList = async () => {
                         <label className="form-check-label" htmlFor="customCheck1" />
                       </div>
                     </th>
-                    <th>ID</th>
-                    <th>Order By</th>
-                    <th>Order Date</th>
+                    <th>Invoice Number</th>
+                    <th>Customer Name</th>
+                    <th>Issue Date</th>
                     <th>Total</th>
-                    <th>Payment Method</th>
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
@@ -63,28 +81,26 @@ const InvoiceList = async () => {
                       </td>
                       <td>
                         <Link href="" className="text-body">
-                          {item.id}
+                          {item?.invoiceNumber}
                         </Link>{' '}
                       </td>
                       <td>
-                        {item.customer?.image && <Image src={item.customer?.image} className="avatar-sm rounded-circle me-2" alt="..." />}{' '}
-                        {item.customer?.name}
+                        {item?.customerName}
                       </td>
-                      <td>{item.product?.date.toLocaleString('en-us', {
+                      <td>{item?.issueDate.toLocaleString('en-us', {
                       day: 'numeric',
                       month: 'short',
                       year: 'numeric'
                     })}</td>
-                      <td>${item.product?.price} </td>
-                      <td>{item.paymentMethod} </td>
+                      <td>${item.totalAmount} </td>
                       <td>
                         <span className={`badge bg-${item.orderStatus == 'Packaging' ? 'primary-subtle' : item.orderStatus == 'Canceled' ? 'danger-subtle' : 'success-subtle'} text-${item.orderStatus == 'Packaging' ? 'primary' : item.orderStatus == 'Canceled' ? 'danger' : 'success'} py-1 px-2`}>
-                          {item.orderStatus}
+                          {item.status}
                         </span>{' '}
                       </td>
                       <td>
                         <div className="d-flex gap-2">
-                          <Link href="" className="btn btn-light btn-sm">
+                          <Link href={`/invoice/${item.id}`} className="btn btn-light btn-sm">
                             <IconifyIcon icon="solar:eye-broken" className="align-middle fs-18" />
                           </Link>
                           <Link href="" className="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">

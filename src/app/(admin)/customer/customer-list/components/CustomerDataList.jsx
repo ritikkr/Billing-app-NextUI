@@ -28,6 +28,12 @@ const CustomerDataList =  () => {
             <div>
               <CardTitle as={'h4'}>All Customers List</CardTitle>
             </div>
+            <div className='d-flex gap-2'>
+            <Link href={`/customer/customer-add`} className="btn btn-sm btn-primary">
+            
+              Add Customer
+              
+            </Link>
             <Dropdown>
               <DropdownToggle className="btn btn-sm btn-outline-light content-none icons-center" data-bs-toggle="dropdown" aria-expanded="false">
                 This Month <IconifyIcon className="ms-1" width={16} height={16} icon="bx:chevron-down" />
@@ -44,6 +50,7 @@ const CustomerDataList =  () => {
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
+            </div>
           </div>
           <div>
             <div className="table-responsive">

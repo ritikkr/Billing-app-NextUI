@@ -10,6 +10,7 @@ import Link from 'next/link';
 import product1 from '@/assets/images/spc.png';
 import React from 'react';
 import AxiosInstance from '@/utils/axiosInstance';
+import { useParams } from 'next/navigation';
 
 const ProductData = async ({productData, currency}) => {
   
@@ -56,12 +57,15 @@ const ProductData = async ({productData, currency}) => {
     </Row>;
 };
 const page = () => {
+    const params = useParams();
+  const invoiceId = params?.invoiceId;
   const [invoiceData, setInvoiceData] = React.useState();
   const [customerData, setCustomerData] = React.useState();
   const currency = '₹';
   React.useEffect(() => {
     const fetchData = async () => {
-      const {data} = await AxiosInstance.get("/bills/1");
+      if (!invoiceId) {return;}  
+      const {data} = await AxiosInstance.get(`/bills/${invoiceId}`);
       console.log("Invoice Data:", data);
       setInvoiceData(data);
       const customerResponse = await AxiosInstance.get(`/customers/${data.customerId}`);
@@ -69,7 +73,7 @@ const page = () => {
       setCustomerData(customerResponse.data);
     };
     fetchData();
-  }, []);
+  }, [invoiceId]);
 
   const options = {
         filename: 'my-document.pdf',
