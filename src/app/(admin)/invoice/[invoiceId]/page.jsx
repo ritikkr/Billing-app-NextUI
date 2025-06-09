@@ -96,10 +96,10 @@ const page = () => {
                   <div className="p-0 pe-5 py-1">
                     <h4>Sudhakar Pest Control</h4>
                     <address className="mt-3 mb-0">
-                     639, Gali No. 28, Chandan Vihar, West Sant Nagar
+                     639, Gali No. 28, Chandan Vihar, 
                       <br />
-                      Burari, Delhi-110084 <br />
-                      <abbr title="Phone">Phone:</abbr> 9650783985
+                     West Sant Nagar, Burari, <br/> Delhi-110084 <br/>
+                      <span className="text-decoration-underline">Phone:</span> 9650783985
                     </address>
                   </div>
                 </div>
@@ -153,11 +153,12 @@ const page = () => {
                     <CardTitle as={'h4'}>Issue From :</CardTitle>
                     <div className="mt-3">
                       <h4>Sudhakar Pest Control</h4>
-                      <p className="mb-2">639, Gali No. 28, Chandan Vihar, West Sant Nagar <br />
-                      Burari, Delhi-110084</p>
-                      <p className="mb-2">
-                        <span className="text-decoration-underline">Phone :</span> 9650783958
-                      </p>
+                    <address className="mt-3 mb-0">
+                     639, Gali No. 28, Chandan Vihar, 
+                      <br />
+                     West Sant Nagar, Burari, <br/> Delhi-110084 <br/>
+                      <span className="text-decoration-underline">Phone:</span> 9650783985
+                    </address>
                       <p className="mb-2">
                         <span className="text-decoration-underline">Email :</span> sudhakarpestcontrol@gmail.com
                       </p>

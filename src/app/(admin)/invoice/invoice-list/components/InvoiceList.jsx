@@ -92,7 +92,7 @@ const InvoiceList = async () => {
                       month: 'short',
                       year: 'numeric'
                     })}</td>
-                      <td>${item.totalAmount} </td>
+                      <td>₹{item.totalAmount} </td>
                       <td>
                         <span className={`badge bg-${item.orderStatus == 'Packaging' ? 'primary-subtle' : item.orderStatus == 'Canceled' ? 'danger-subtle' : 'success-subtle'} text-${item.orderStatus == 'Packaging' ? 'primary' : item.orderStatus == 'Canceled' ? 'danger' : 'success'} py-1 px-2`}>
                           {item.status}
